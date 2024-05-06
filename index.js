@@ -58,6 +58,7 @@ async function generateLogo() {
   </svg>`;
 
   // *HTML Generation for logo.html.
+  // *Style included to avoid issues with a style.css.
   const htmlCode = `<!DOCTYPE html>
   <html>
   <head>

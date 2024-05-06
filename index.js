@@ -4,6 +4,7 @@ const inquirer = require("inquirer");
 const { Triangle, Circle, Square } = require("./lib/shapes");
 
 // *Function to generate the logo.
+// *Inquirer questions.
 async function generateLogo() {
   const answers = await inquirer.prompt([
     {
@@ -28,10 +29,12 @@ async function generateLogo() {
       name: "shapeColor",
       message: "Enter the shape color (keyword or hexadecimal):",
     },
+    // !End of questions.
   ]);
 
   const { text, textColor, shape, shapeColor } = answers;
 
+  // *Shape object creation based on answer.
   let shapeInstance;
   if (shape === "circle") {
     shapeInstance = new Circle(shapeColor);
@@ -41,7 +44,9 @@ async function generateLogo() {
     shapeInstance = new Square(shapeColor);
   }
 
+  // *Define Viewport width and height.
   const svgCode = `<svg xmlns="http://www.w3.org/2000/svg" width="300" height="200">
+    // *Place holder for chosen shape.
     ${shapeInstance.render()}
     <text x="150" y="125" font-size="60" text-anchor="middle" fill="${textColor}">${text}</text>
   </svg>`;

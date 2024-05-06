@@ -11,7 +11,13 @@ async function generateLogo() {
       type: "input",
       name: "text",
       message: "Enter up to three characters:",
-      validate: (input) => input.length <= 3,
+      validate: (input) => {
+        if (input.length <= 3) {
+          return true;
+        } else {
+          return "Please enter no more than three characters.";
+        }
+      },
     },
     {
       type: "input",
